@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteConnect — Where Start-Ups Meet Taste Buds</title>
+    <style>
+        /* Design System */
+        :root {
+            --color-primary: #FF6B35;
+            --color-secondary: #004E89;
+            --color-accent: #1AC8ED;
+            --color-success: #06A77D;
+            --color-warning: #FFA500;
+            --color-dark: #0F3460;
+            --color-light: #F8F9FA;
+            --color-white: #FFFFFF;
+            --color-text: #1F1F1F;
+            --color-text-light: #666666;
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+            --radius: 12px;
+            --spacing: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: var(--color-white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-light);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-menu li:last-child .nav-link {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+        .nav-link {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-secondary) 100%);
+            color: var(--color-white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #e55a27;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn-lg {
+            padding: 14px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background-color: var(--color-light);
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--color-secondary);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-card h3 {
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .step-card p {
+            color: var(--color-text-light);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--color-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            color: var(--color-primary);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+
+        .team h3 {
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--color-light);
+            border-radius: var(--radius);
+        }
+
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .team-member h4 {
+            color: var(--color-secondary);
+        }
+
+        .team-member p {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Events Section */
+        .events {
+            padding: 80px 0;
+            background-color: var(--color-light);
+        }
+
+        .events h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--color-secondary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .event-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .event-card h3 {
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .event-card p {
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-price {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 1rem !important;
+        }
+
+        .faq {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-top: 3rem;
+        }
+
+        .faq h3 {
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-light);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            color: var(--color-text-light);
+        }
+
+        /* Start-Ups Section */
+        .startups {
+            padding: 80px 0;
+        }
+
+        .startups h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--color-secondary);
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(26,200,237,0.1));
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid var(--color-primary);
+        }
+
+        .benefit-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: var(--color-text-light);
+        }
+
+        .packages-title {
+            text-align: center;
+            color: var(--color-secondary);
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .package-card {
+            background: var(--color-white);
+            border: 2px solid var(--color-light);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .package-card.featured {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            transform: scale(1.05);
+        }
+
+        .package-card h3 {
+            color: var(--color-secondary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-desc {
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            color: var(--color-text-light);
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            color: var(--color-secondary);
+        }
+
+        .startup-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        /* Forms */
+        .form-section {
+            background: var(--color-light);
+            padding: 3rem;
+            border-radius: var(--radius);
+            margin-top: 3rem;
+        }
+
+        .form-section h3 {
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .application-form,
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 2px solid var(--color-light);
+            border-radius: var(--radius);
+            font-family: var(--font-family);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .radio-group input {
+            margin-right: 0.5rem;
+            width: auto;
+        }
+
+        /* Gallery */
+        .gallery {
+            padding: 80px 0;
+            background-color: var(--color-light);
+        }
+
+        .gallery h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-secondary);
+        }
+
+        .gallery-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            padding: 1.5rem;
+            background: var(--color-white);
+            text-align: center;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-light);
+            border: 2px solid var(--color-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--color-primary);
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background: #e55a27;
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-light);
+            padding: 2rem;
+            border-radius: var(--radius);
+        }
+
+        .contact-form-wrapper h3 {
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info h3 {
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-light);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-white);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            color: var(--color-secondary);
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .startup-ctas {
+                flex-direction: column;
+            }
+
+            .package-card.featured {
+                transform: scale(1);
+            }
+
+            .carousel-slide img {
+                height: 250px;
+            }
+
+            .carousel-prev,
+            .carousel-next {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                gap: 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#home" class="logo">
+            <img src="gallery/imagelogo.jpeg" alt="TasteConnect Logo" class="logo-img">
+        </a>
+        <ul class="nav-menu">
+            <li><a class="nav-link" onclick="scrollToSection('home')">Home</a></li>
+            <li><a class="nav-link" onclick="scrollToSection('about')">About Us</a></li>
+            <li><a class="nav-link" onclick="scrollToSection('events')">Events</a></li>
+            <li><a class="nav-link" onclick="scrollToSection('startups')">For Start-Ups</a></li>
+            <li><a class="nav-link" onclick="scrollToSection('gallery')">Gallery</a></li>
+            <li><a class="nav-link" onclick="scrollToSection('contact')">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>TasteConnect</h1>
+            <p class="hero-subtitle">Where Start-Ups Meet Taste Buds</p>
+            <p class="hero-description">Connect with passionate communities and discover innovative F&B brands at unforgettable tasting events.</p>
+            <div class="hero-ctas">
+                <button class="btn btn-primary" onclick="scrollToSection('events')">Join as a Participant</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('startups')">Join as a Start-Up</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Buy Ticket</h3>
+                    <p>Secure your spot for €10 and join our next tasting event</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Discover & Taste</h3>
+                    <p>Explore innovative products and meet the founders behind them</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Vote & Connect</h3>
+                    <p>Give feedback and discover your new favorite brands</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About TasteConnect</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>TasteConnect was born from a simple observation: students love discovering new food and beverage products, and start-ups desperately need real, honest, and affordable consumer feedback. We wanted to create a space where these two worlds could meet in a dynamic, social, and playful way.</p>
+                    
+                    <h3>What Problem We Solve</h3>
+                    <p>Many early-stage F&B brands struggle to reach the right audience, collect reliable feedback, and build visibility without expensive marketing. TasteConnect solves this by offering start-ups a direct testing platform and students an affordable, interactive tasting experience.</p>
+                    
+                    <h3>Our Values</h3>
+                    <p><strong>Innovation</strong> • <strong>Community</strong> • <strong>Fun</strong></p>
+                    <p>We believe in giving emerging brands the creative space to grow, bringing students and entrepreneurs together, and turning every event into a vibrant, memorable experience.</p>
+                </div>
+                <div class="team">
+                    <h3>Our Team</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">N</div>
+                            <h4>Nicole</h4>
+                            <p>Co-Founder, ESCP</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">V</div>
+                            <h4>Vincent</h4>
+                            <p>Co-Founder, ESCP</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">M</div>
+                            <h4>Martina</h4>
+                            <p>Co-Founder, ESCP</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">C</div>
+                            <h4>Charlotte</h4>
+                            <p>Co-Founder, ESCP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <p class="section-subtitle">Discover amazing new brands and get instant feedback from engaged communities</p>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <h3>Winter Craft Beverages Tasting</h3>
+                    <p class="event-date">📅 December 15, 2025</p>
+                    <p class="event-location">📍 ESCP Paris Campus</p>
+                    <p class="event-brands">🍽️ 12 brands</p>
+                    <p class="event-price">💶 €10 per ticket</p>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('ticketModal')">Buy Ticket</button>
+                </div>
+                <div class="event-card">
+                    <h3>Vegan & Sustainable Food Festival</h3>
+                    <p class="event-date">📅 January 10, 2026</p>
+                    <p class="event-location">📍 Hub Station, Brussels</p>
+                    <p class="event-brands">🍽️ 15 brands</p>
+                    <p class="event-price">💶 €10 per ticket</p>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('ticketModal')">Buy Ticket</button>
+                </div>
+                <div class="event-card">
+                    <h3>Snack Innovation Showcase</h3>
+                    <p class="event-date">📅 January 28, 2026</p>
+                    <p class="event-location">📍 LaSalle Campus, Madrid</p>
+                    <p class="event-brands">🍽️ 10 brands</p>
+                    <p class="event-price">💶 €10 per ticket</p>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('ticketModal')">Buy Ticket</button>
+                </div>
+                <div class="event-card">
+                    <h3>Coffee & Chocolate Masterclass</h3>
+                    <p class="event-date">📅 February 14, 2026</p>
+                    <p class="event-location">📍 ESCP Paris Campus</p>
+                    <p class="event-brands">🍽️ 8 brands</p>
+                    <p class="event-price">💶 €10 per ticket</p>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('ticketModal')">Buy Ticket</button>
+                </div>
+            </div>
+
+            <div class="faq">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <h4>Can I get a refund?</h4>
+                    <p>Yes, full refunds are available up to 7 days before the event.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What if I have allergies?</h4>
+                    <p>Please inform us during registration. We work with brands to provide allergy information.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I bring a friend?</h4>
+                    <p>Absolutely! We offer group ticket discounts. Contact us for details.</p>
+                </div>
+                <div class="faq-item" style="margin-top: 4rem;">
+    <h4>Still have a question?</h4>
+    <p>Send us your request and we will get back to you.</p>
+    <form onsubmit="handleFaqRequest(event)" class="contact-form">
+        <div class="form-group">
+            <label>Your email *</label>
+            <input type="email" required>
+        </div>
+        <div class="form-group">
+            <label>Your question *</label>
+            <textarea required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Send Request</button>
+    </form>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- For Start-Ups Section -->
+    <section id="startups" class="startups">
+        <div class="container">
+            <h2>For Start-Ups</h2>
+            <p class="section-subtitle">Reach 100-250 engaged participants and get real feedback on your products</p>
+
+            <div class="benefits">
+                <div class="benefit-card">
+                    <h3>📊 Real-Time Feedback</h3>
+                    <p>Instant consumer insights from your target audience</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>👥 Direct Access</h3>
+                    <p>Connect with 100-250 engaged participants per event</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📈 Brand Visibility</h3>
+                    <p>Highlighted on our marketing materials and communications</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📸 Professional Content</h3>
+                    <p>High-quality photos of your brand at the event</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📋 Data Reports</h3>
+                    <p>Comprehensive feedback analysis after each event</p>
+                </div>
+            </div>
+
+            <h3 class="packages-title">Our Packages</h3>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Silver</h3>
+                    <p class="package-price">€550</p>
+                    <p class="package-desc">Perfect for first-time participants</p>
+                    <ul class="package-features">
+                        <li>✓ Basic participation</li>
+                        <li>✓ One table + presentation</li>
+                        <li>✓ Student feedback</li>
+                        <li>✓ Logo on communications</li>
+                    </ul>
+                </div>
+                <div class="package-card featured">
+                    <h3>Gold</h3>
+                    <p class="package-price">€700</p>
+                    <p class="package-desc">Premium visibility package</p>
+                    <ul class="package-features">
+                        <li>✓ All Silver features</li>
+                        <li>✓ Priority location</li>
+                        <li>✓ Marketing highlights</li>
+                        <li>✓ Dedicated Instagram reel</li>
+                        <li>✓ Enhanced report placement</li>
+                    </ul>
+                </div>
+                <div class="package-card">
+                    <h3>Mix</h3>
+                    <p class="package-price">€620</p>
+                    <p class="package-desc">Customizable package</p>
+                    <ul class="package-features">
+                        <li>✓ Flexible perks</li>
+                        <li>✓ Custom solutions</li>
+                        <li>✓ Tailored experience</li>
+                        <li>✓ Full support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="startup-ctas">
+                <button class="btn btn-primary btn-lg" onclick="scrollToSection('startup-form')">Apply as a Start-Up</button>
+                <button class="btn btn-primary btn-lg" onclick="openModal('callModal')">Book a Call With Us</button>
+            </div>
+
+            <!-- Startup Application Form -->
+            <div id="startup-form" class="form-section">
+                <h3>Start-Up Application Form</h3>
+                <form class="application-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label>Brand Name *</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Website *</label>
+                            <input type="url" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Instagram Handle</label>
+                            <input type="text" placeholder="@yourhandle">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Category *</label>
+                        <select required>
+                            <option value="">Select a category</option>
+                            <option value="food">Food</option>
+                            <option value="drink">Beverage</option>
+                            <option value="vegan">Vegan/Plant-based</option>
+                            <option value="alcoholic">Alcoholic</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Description *</label>
+                        <textarea required placeholder="Tell us about your products"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Package *</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="package" value="silver" required> Silver (€550)</label>
+                            <label><input type="radio" name="package" value="gold"> Gold (€700)</label>
+                            <label><input type="radio" name="package" value="mix"> Mix (€620)</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Your Logo</label>
+                        <input type="file" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Product Images</label>
+                        <input type="file" accept="image/*" multiple>
+                    </div>
+                    <div class="form-group">
+                        <h4>Special Requirements</h4>
+                        <label><input type="checkbox"> Need electricity?</label>
+                        <label><input type="checkbox"> Need fridge space?</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Which event interest you? *</label>
+                        <select required>
+                            <option value="">Select an event</option>
+                            <option value="beverages">Winter Craft Beverages</option>
+                            <option value="vegan">Vegan & Sustainable</option>
+                            <option value="snacks">Snack Innovation</option>
+                            <option value="coffee">Coffee & Chocolate</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Contact Person Name *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>How did you hear about us? *</label>
+                        <select required>
+                            <option value="">Select an option</option>
+                            <option value="social">Social Media</option>
+                            <option value="friend">Friend Referral</option>
+                            <option value="search">Google Search</option>
+                            <option value="event">Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" required> I agree to the terms and conditions</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section with Carousel -->
+   <section id="gallery" class="gallery">
+    <div class="container">
+        <h2>Event Moments</h2>
+        <div class="gallery-carousel">
+            <div class="carousel-slides" id="carouselSlides">
+                <div class="carousel-slide">
+                    <img src="gallery/image1.jpeg" alt="Participants tasting craft beverages">
+                    <div class="slide-caption">Participants tasting craft beverages</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gallery/image2.jpeg" alt="Brands showcasing their products">
+                    <div class="slide-caption">Brands showcasing their products</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gallery/image3.jpeg" alt="Networking moment">
+                    <div class="slide-caption">Networking moment</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gallery/image4.jpeg" alt="Students exploring flavors">
+                    <div class="slide-caption">Students exploring flavors</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gallery/image5.jpeg" alt="Brand founders with participants">
+                    <div class="slide-caption">Brand founders with participants</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gallery/image6.jpeg" alt="The TasteConnect community">
+                    <div class="slide-caption">The TasteConnect community</div>
+                </div>
+            </div>
+            <button class="carousel-prev" onclick="prevSlide()">‹</button>
+            <button class="carousel-next" onclick="nextSlide()">›</button>
+        </div>
+        <div class="carousel-controls" id="carouselDots"></div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <h3>Contact Us</h3>
+                    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject *</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <h4>📧 Email</h4>
+                        <p><a href="mailto:hello@tasteconnect.eu">hello@tasteconnect.eu</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>📱 Instagram</h4>
+                        <p><a href="https://instagram.com" target="_blank">@tasteconnect.eu</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>🤝 Partnerships</h4>
+                        <p>Interested in sponsoring our events? Let's talk!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TasteConnect. All rights reserved.</p>
+            <div class="footer-links">
+                <a onclick="scrollToSection('home')">Home</a>
+                <a onclick="scrollToSection('about')">About</a>
+                <a onclick="scrollToSection('contact')">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Buy Event Tickets</h3>
+                <button class="close-btn" onclick="closeModal('ticketModal')">✕</button>
+            </div>
+            <p style="margin-bottom: 1rem; color: var(--color-text-light);">
+                Thank you for your interest! Ticket purchases will be processed through our secure payment system.
+            </p>
+            <p style="margin-bottom: 1.5rem; color: var(--color-secondary); font-weight: 600;">
+                Ticket Price: €10
+            </p>
+            <button class="btn btn-primary" style="width: 100%;" onclick="alert('🎉 Ticket booked successfully! Check your email for confirmation.'); closeModal('ticketModal')">
+                Confirm & Pay
+            </button>
+        </div>
+    </div>
+
+    <div id="callModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Book a Call</h3>
+            <button class="close-btn" onclick="closeModal('callModal')">✕</button>
+        </div>
+        <form onsubmit="handleCallBooking(event)">
+            <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.75rem;">
+                <label>Preferred Time *</label>
+                <select required>
+                    <option value="">Select a time</option>
+                    <option value="morning">Morning (09:00-12:00)</option>
+                    <option value="afternoon">Afternoon (14:00-17:00)</option>
+                    <option value="evening">Evening (17:00-19:00)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Book Call</button>
+        </form>
+    </div>
+</div>
+
+    </div>
+
+    <script>
+        // Navigation
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Gallery Carousel
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.carousel-slide').length;
+
+        function initCarousel() {
+            createDots();
+            updateCarousel();
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }, 4000);
+        }
+
+        function createDots() {
+            const dotsContainer = document.getElementById('carouselDots');
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateCarousel() {
+            const slides = document.getElementById('carouselSlides');
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            updateCarousel();
+        }
+
+        // Modals
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // Forms
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('✅ Thank you for your application! We will review it and get back to you soon.');
+            event.target.reset();
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert('✅ Thank you for your message! We will get back to you as soon as possible.');
+            event.target.reset();
+        }
+
+        function handleCallBooking(event) {
+            event.preventDefault();
+            alert('✅ Call booked successfully! We will contact you at the selected time.');
+            closeModal('callModal');
+            event.target.reset();
+        }
+
+        // Initialize carousel when page loads
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    </script>
+</body>
+</html>
